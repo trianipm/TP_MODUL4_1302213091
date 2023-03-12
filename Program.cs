@@ -32,6 +32,34 @@ class KodePos
     }
 }
 
+class DoorMachine
+{
+    // enum yang merepresentasikan state dari pintu
+    enum State
+    {
+        Terkunci,
+        Terbuka
+    }
+
+    // variabel state pintu, diinisialisasi dengan state awal (Terkunci)
+    private State state = State.Terkunci;
+
+    // method untuk mengubah state pintu menjadi Terkunci
+    public void Lock()
+    {
+        state = State.Terkunci;
+        Console.WriteLine("Pintu terkunci");
+    }
+
+    // method untuk mengubah state pintu menjadi Terbuka
+    public void Unlock()
+    {
+        state = State.Terbuka;
+        Console.WriteLine("Pintu tidak terkunci");
+    }
+}
+
+
 class Program
 {
     static void Main(string[] args)
@@ -39,5 +67,16 @@ class Program
         KodePos kodepos = new KodePos();
         Console.WriteLine("Kode Pos Cijaura: " + kodepos.getKodePos("Cijaura")); // output: 40287 
         Console.WriteLine(kodepos.getKodePos("Dayeuhkolot")); // output: Kode pos tidak ditemukan.
+
+        DoorMachine door = new DoorMachine();
+
+        // memanggil method Lock() untuk mengubah state pintu menjadi Terkunci
+        door.Lock(); // output: Pintu terkunci
+
+        // memanggil method Unlock() untuk mengubah state pintu menjadi Terbuka
+        door.Unlock(); // output: Pintu tidak terkunci
+
+        // memanggil method Lock() untuk mengubah state pintu menjadi Terkunci
+        door.Lock(); // output: Pintu terkunci
     }
 }
